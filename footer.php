@@ -32,10 +32,11 @@
 
     <!-- Grid column -->
     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-      <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
-      <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-        consectetur
-        adipisicing elit.</p>
+      <h6 class="text-uppercase mb-4 font-weight-bold">EDUSY</h6>
+      <p>We are a team of enthusiastic digital marketers and creators
+based in India. We render the best platform for a student to
+choose the most appropriate guide. We encourage the learning
+enthusiasts to get the best one can opt for achieving success.</p>
     </div>
     <!-- Grid column -->
 
@@ -43,18 +44,18 @@
 
     <!-- Grid column -->
     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-      <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+      <h6 class="text-uppercase mb-4 font-weight-bold">Courses</h6>
       <p>
-        <a href="#!">MDBootstrap</a>
+        <a href="#!">CLoud Computing</a>
       </p>
       <p>
-        <a href="#!">MDWordPress</a>
+        <a href="#!">Graphics Designing</a>
       </p>
       <p>
-        <a href="#!">BrandFlow</a>
+        <a href="#!">Microprocessor Designing</a>
       </p>
       <p>
-        <a href="#!">Bootstrap Angular</a>
+        <a href="#!">Artificial Intelligence</a>
       </p>
     </div>
     <!-- Grid column -->
@@ -68,10 +69,10 @@
         <a href="#!">Your Account</a>
       </p>
       <p>
-        <a href="#!">Become an Affiliate</a>
+        <a href="#!">Become a Technical Trainer</a>
       </p>
       <p>
-        <a href="#!">Shipping Rates</a>
+        <a href="#!">About Us</a>
       </p>
       <p>
         <a href="#!">Help</a>
@@ -85,13 +86,11 @@
     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
       <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
       <p>
-        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+        <i class="fas fa-home mr-3"></i> Rourkela, Odisha</p>
       <p>
-        <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+        <i class="fas fa-envelope mr-3"></i> edusy@support.com</p>
       <p>
-        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-      <p>
-        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+        <i class="fas fa-phone mr-3"></i> +91 809-393-5340</p>
     </div>
     <!-- Grid column -->
 
@@ -108,8 +107,8 @@
 
       <!--Copyright-->
       <p class="text-center text-md-left">© 2020 Copyright:
-        <a href="https://mdbootstrap.com/">
-          <strong> MDBootstrap.com</strong>
+        <a href="https://www.edusy.com/">
+          <strong> Edusy</strong>
         </a>
       </p>
 
@@ -124,27 +123,23 @@
 
 <!-- Facebook -->
 <a class="fb-ic">
+<a href="https://www.facebook.com/edusy/">
 <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
 </a>
 <!-- Twitter -->
 <a class="tw-ic">
+<!-- <a href="https://www.facebook.com/edusy/"> -->
 <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
-</a>
-<!-- Google +-->
-<a class="gplus-ic">
-<i class="fab fa-google-plus-g fa-lg white-text mr-4"> </i>
 </a>
 <!--Linkedin -->
 <a class="li-ic">
+<!-- <a href="https://www.facebook.com/edusy/"> -->
 <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
 </a>
 <!--Instagram-->
 <a class="ins-ic">
+<!-- <a href="https://www.facebook.com/edusy/"> -->
 <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
-</a>
-<!--Pinterest-->
-<a class="pin-ic">
-<i class="fab fa-pinterest fa-lg white-text"> </i>
 </a>
 
 </div>
