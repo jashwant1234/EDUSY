@@ -1,1 +1,1 @@
-# edusy
+# Edusy
