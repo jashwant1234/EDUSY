@@ -137,12 +137,12 @@ p.mb-1 {
             <div>
                 <p class="mb-1">Start managing your</p>
                 <h4 class="mb-5 text-white">money with us!</h4>
-            </div>
+            </div> <a href="login.php"><button class="btn btn-primary btn-lg" ><small>Already signed up?</small><span>&nbsp;Log in</span> </button></a>
         </div>
         <div class="card two bg-white px-5 py-4 mb-3">
             <div class="form-group"><input type="email" class="form-control" id="mail" required><label class="form-control-placeholder" for="mail">Email</label></div>
-            <div class="form-group"><input type="password" class="form-control" id="password" required><label class="form-control-placeholder" for="password">Password</label></div>
-            <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"><span>Get started<i class="fas fa-long-arrow-alt-right ml-2"></i></span></button>
+            <div class="form-group"><input type="text" class="form-control" id="name" required><label class="form-control-placeholder" for="name">Full Name</label></div>
+            <div class="form-group"><input type="password" class="form-control" id="password" required><label class="form-control-placeholder" for="password">Password</label></div> <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"><span>Get started<i class="fas fa-long-arrow-alt-right ml-2"></i></span></button>
         </div>
     </div>
 </div>

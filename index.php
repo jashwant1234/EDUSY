@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,9 +137,18 @@
       bottom: 20px;
     }
   </style>
-  
-  
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+
   <?php include 'menu_bar.php'; ?>
+
 </head>
 
 <body>
@@ -674,6 +684,8 @@
               <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg" alt="Card image cap">
               <div class="card-body">
                 <h4 class="card-title font-weight-bold">Card title</h4>
+                <a><span class="badge badge-danger">Sport</span></a>
+                <a><span class="badge badge-danger">Sport</span></a>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                   card's content.</p>
                 <a class="btn btn-primary btn-md btn-rounded">Button</a>
@@ -748,8 +760,7 @@
         </div>
       </div>
     </div>
-    </div>
-
+  </div>
     <!--/.Carousel Wrapper-->
 
   <script>
@@ -927,18 +938,7 @@
 
   <!--strick-->
   <!-- End your project here-->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
 
 </body>
-
 <?php include "footer.php"; ?>
-
 </html>
