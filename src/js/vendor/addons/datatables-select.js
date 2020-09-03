@@ -1045,7 +1045,6 @@ function namespacedEvents ( config ) {
 }
 
 function enabled ( dt, config ) {
-<<<<<<< HEAD
 	if ( $.inArray( 'rows', config.limitTo ) !== -1 && dt.rows( { selected: true } ).any() ) {
 		return true;
 	}
@@ -1059,15 +1058,6 @@ function enabled ( dt, config ) {
 	}
 
 	return false;
-=======
-	var checkinArray = function(tableComponent) {
-		return $.inArray( tableComponent, config.limitTo ) !== -1 && dt[tableComponent]( { selected: true } ).any();
-	};
-	
-	return (
-		checkinArray('row') || checkinArray('columns') || checkinArray('cells')
-	);
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236
 }
 
 var _buttonNamespace = 0;

@@ -198,9 +198,9 @@
 
 
 
-`<div class="container jumbotrun">
+<div class="container jumbotrun">
 
-  <hr>
+<hr>
 
 <!--Projects section v.3-->
 <section id="info" class="mt-4 mb-5 pb-4">
@@ -238,6 +238,11 @@
             <a class="nav-link" data-toggle="tab" href="#panel33" role="tab">
               <i class="fas fa-university fa-2x"></i>
               <br> Financial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel34" role="tab">
+              <i class="fas fa-home fa-2x"></i>
+              <br> Housing</a>
           </li>
         </ul>
 
@@ -365,6 +370,46 @@
 
         </div>
         <!--Panel 3-->
+
+        <!--Panel 4-->
+        <div class="tab-pane fade" id="panel34" role="tabpanel">
+          <br>
+
+          <!--First row-->
+          <div class="row">
+
+            <!--First column-->
+            <div class="col-lg-5 col-md-12">
+
+              <!--Featured image-->
+              <div class="view overlay z-depth-1 mb-2">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2842%29.jpg"
+                  class="rounded img-fluid" alt="sample image">
+              </div>
+            </div>
+            <!--First column-->
+
+            <!--Second column-->
+            <div class="col-lg-6 ml-lg-auto col-md-12 text-center text-md-left">
+
+              <!--Title-->
+              <h4 class="mb-5">Residential Life</h4>
+
+              <!--Description-->
+              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi soluta
+                ratione
+                quisquam, dicta ab cupiditate iure eaque? Repellendus voluptatum, magni impedit
+                eaque delectus, beatae maxime temporibus maiores quibusdam quasi.Rem magnam ad
+                perferendis iusto sint tempora ea voluptatibus iure, animi excepturi modi aut
+                possimus in hic molestias repellendus illo ullam odit quia velit.</p>
+
+            </div>
+            <!--Second column-->
+          </div>
+          <!--First row-->
+
+        </div>
+        <!--Panel 4-->
 
       </div>
       <!--Tab panels-->

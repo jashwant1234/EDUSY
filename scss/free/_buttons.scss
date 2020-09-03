@@ -94,16 +94,9 @@
   @include make-gradient-button($name, $val);
 }
 
-<<<<<<< HEAD
-=======
-.btn-warning:focus,
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active,
 .show > .btn-warning.dropdown-toggle {
   color: $white-base;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236

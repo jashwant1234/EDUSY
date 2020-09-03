@@ -598,21 +598,12 @@
 $(document).ready(function () {
   //Initialization
   Waves.attach('.btn:not(.btn-flat), .btn-floating', ['waves-light']);
-<<<<<<< HEAD
   Waves.attach('.btn-flat', ['waves-effect']);
   Waves.attach('.chip', ['waves-effect']);
-=======
-  Waves.attach('.btn-flat');
-  Waves.attach('.chip');
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236
   Waves.attach('.view a .mask', ['waves-light']);
   Waves.attach('.waves-light', ['waves-light']);
   Waves.attach('.navbar-nav a:not(.navbar-brand), .nav-icons li a, .nav-tabs .nav-item:not(.dropdown)', ['waves-light']);
   Waves.attach('.pager li a', ['waves-light']);
-<<<<<<< HEAD
   Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
-=======
-  Waves.attach('.pagination .page-item .page-link');
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236
   Waves.init();
 });

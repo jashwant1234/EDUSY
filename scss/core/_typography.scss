@@ -1,6 +1,5 @@
 // Typography
 
-<<<<<<< HEAD
 // Roboto font
 @font-face {
   font-family: Roboto;
@@ -37,8 +36,6 @@
   src: url("#{$roboto-font-path}Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("#{$roboto-font-path}Roboto-Bold.woff2") format("woff2"), url("#{$roboto-font-path}Roboto-Bold.woff") format("woff"), url("#{$roboto-font-path}Roboto-Bold.ttf") format("truetype");
 }
 
-=======
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236
 // General properties
 body {
   font-family: $mdb-font-family;

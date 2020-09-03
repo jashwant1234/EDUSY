@@ -2585,9 +2585,5 @@ Popper.Defaults = Defaults;
 
 return Popper;
 
-<<<<<<< HEAD
 })));
 //# sourceMappingURL=popper.js.map
-=======
-})));
->>>>>>> a5d4bd5d471902427f9ec15971a5b1f6fef38236
