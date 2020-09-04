@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/mdb.min.css">
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="animate.min.css">
+  <link rel="stylesheet" href="css/animate.min.css">
 
 
   <style>

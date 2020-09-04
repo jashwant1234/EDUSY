@@ -26,6 +26,7 @@
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
+  <?php include 'menu_bar.php'; ?>
 </head>
 <body>
   <!-- Start your project here-->  
@@ -43,4 +44,5 @@
   <!-- jQuery -->
 
 </body>
+<?php include "footer.php"; ?>
 </html>
