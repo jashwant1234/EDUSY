@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animate.min.css">
 
-
   <style>
     .acol{
       background-color: blue;
@@ -137,7 +136,8 @@
       bottom: 20px;
     }
   </style>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+  
+  <script type="text/javascript" src="js/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
   <!-- Bootstrap core JavaScript -->
@@ -147,16 +147,17 @@
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
 
-  <?php include 'menu_bar.php'; ?>
+  <?php
+   include 'menu_bar.php'; 
+   include 'config.php';
+  ?>
 
 </head>
 
 <body>
   <!-- Start your project here-->
   <!--carousel-->
- 
- 
- 
+
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active" style="background-color: #b0c6f5;">
@@ -210,17 +211,8 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
- 
- 
- 
- 
- 
+  
   <!--End carousel-->
-
-
-
-
-
 
   <div class="container jumbotrun">
 
@@ -400,15 +392,8 @@
 
   </div>
 
-
-
-
-
-
-
   <!--Streak-->
-  
-  
+    
   <div class="streak streak-photo streak-long-2" style="background-image: url('https://mdbootstrap.com/img/Others/doctor.jpg');">
     <div class="flex-center mask rgba-blue-strong">
       <div class="container text-center white-text">
@@ -453,14 +438,11 @@
     </div>
   </div>
   
-  
   <!--/Streak-->
 
 
   <!--Multi Item Carousel-->
-  
-  
-  
+
   <div class="container-fluid background-r">
     <div class="container py-3">
 
@@ -628,15 +610,9 @@
 
     </div>
   </div>
-  
-  
-  
-  
+   
   <!--End Multi Item Carousel-->
   <!--Streak-->
-
-
-
 
   <div class="streak streak-photo streak-md" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Things/full%20page/img%20%287%29.jpg');">
     <div class="flex-center mask rgba-indigo-strong">
@@ -651,16 +627,9 @@
     </div>
   </div>
   
-  
-  
   <!--Streak-->
 
   <!--Streak-->
-
-
-
-
-
 
   <div class="container">
    
@@ -684,8 +653,8 @@
               <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg" alt="Card image cap">
               <div class="card-body">
                 <h4 class="card-title font-weight-bold">Card title</h4>
-                <a><span class="badge badge-danger">Sport</span></a>
-                <a><span class="badge badge-danger">Sport</span></a>
+                <span class="badge badge-warning">Sport</span>
+                <span class="badge badge-success">Sport</span>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                   card's content.</p>
                 <a class="btn btn-primary btn-md btn-rounded">Button</a>
@@ -761,7 +730,8 @@
       </div>
     </div>
   </div>
-    <!--/.Carousel Wrapper-->
+
+  <!--/.Carousel Wrapper-->
 
   <script>
     $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function() {
@@ -781,13 +751,7 @@
     });
   </script>
 
-
-
-
-  <!--Streak-->
-
-
-
+<!--Streak-->
 
   <div class="container">
     <h2 class="text-center mb-5 my-5 pt-4 pb-4 font-weight-bold">Become a Trainer</h2>
@@ -931,14 +895,9 @@
 
   </div>
 
-
-
-
-
-
   <!--strick-->
   <!-- End your project here-->
 
 </body>
 <?php include "footer.php"; ?>
-</html>
+</html> 

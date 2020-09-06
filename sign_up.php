@@ -122,7 +122,33 @@ p.mb-1 {
 }
 
 </style>
-<?php include 'menu_bar.php'; ?>
+
+
+
+<?php include 'menu_bar.php'; 
+include "config.php";
+if(isset($_POST['save'])){
+    $user_name = mysqli_real_escape_string($conn,$_POST['user_name']);
+    $first_name = mysqli_real_escape_string($conn,$_POST['first_name']);
+    $last_name = mysqli_real_escape_string($conn,$_POST['last_name']);
+    $password = mysqli_real_escape_string($conn,md5($_POST['password']));
+
+$sql = "SELECT user_name FROM user WHERE user_name='{$user_name}'" ;
+$result = mysqli_query($conn,$sql) or die("Query Failed.");
+if(mysqli_num_rows($result) > 0){
+    echo "<p style='color:red;text-align:center;margin:10px 0;'>User Name Already Exist</p>";
+}else{
+    $user_id=uniqid('ED');
+ $sql1="INSERT INTO user (user_id,first_name,last_name,user_name,password)
+            VALUES('{$user_id}','{$first_name}','{$last_name}','{$user_name}','{$password}')";
+ if(mysqli_query($conn,$sql1)){
+     header("Location: {$url}/index.php");
+ }else{
+     
+ }
+}
+}
+?>
 </head>
 <body>
   <!-- Start your project here-->  
@@ -140,9 +166,13 @@ p.mb-1 {
             </div> <a href="login.php"><button class="btn btn-primary btn-lg" ><small>Already signed up?</small><span>&nbsp;Log in</span> </button></a>
         </div>
         <div class="card two bg-white px-5 py-4 mb-3">
-            <div class="form-group"><input type="email" class="form-control" id="mail" required><label class="form-control-placeholder" for="mail">Email</label></div>
-            <div class="form-group"><input type="text" class="form-control" id="name" required><label class="form-control-placeholder" for="name">Full Name</label></div>
-            <div class="form-group"><input type="password" class="form-control" id="password" required><label class="form-control-placeholder" for="password">Password</label></div> <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"><span>Get started<i class="fas fa-long-arrow-alt-right ml-2"></i></span></button>
+          <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" autocomplete="off">
+            <div class="form-group"><input type="email" class="form-control" name="user_name" required><label class="form-control-placeholder" for="mail">Email</label></div>
+            <div class="form-group"><input type="text" class="form-control" name="first_name" required><label class="form-control-placeholder" for="First name">First Name</label></div>
+            <div class="form-group"><input type="text" class="form-control" name="last_name" required><label class="form-control-placeholder" for="Last name">Last Name</label></div>
+            <div class="form-group"><input type="password" class="form-control" name="password" required><label class="form-control-placeholder" for="password">Password</label></div>
+            <button class="btn btn-primary btn-block btn-lg mt-1 mb-2" name="save"><span>Get started<i class="fas fa-long-arrow-alt-right ml-2"></i></span></button>
+          </form>
         </div>
     </div>
 </div>

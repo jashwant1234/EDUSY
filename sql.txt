@@ -1,0 +1,8 @@
+CREATE TABLE `edusy`.`user` ( `usre_id` VARCHAR(10) NOT NULL , `first_name` TEXT NOT NULL , `last_name` TEXT NOT NULL , `user_name` VARCHAR(30) NOT NULL , `password` VARCHAR(30) NOT NULL , PRIMARY KEY (`usre_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `edusy`.`courses` ( `cours_id` VARCHAR(30) NOT NULL , `cours_name` VARCHAR(40) NOT NULL , `tag_1` VARCHAR(30) NULL DEFAULT NULL , `tag_2` VARCHAR(30) NULL DEFAULT NULL , `tag_3` VARCHAR(30) NULL DEFAULT NULL , `short_desc` VARCHAR(100) NOT NULL , `long_desc` VARCHAR(400) NOT NULL , `trainer_name` VARCHAR(30) NOT NULL , `duration` VARCHAR(30) NOT NULL , `cours_price` INT(30) NOT NULL , `cours_discount` INT(30) NULL DEFAULT NULL , `top_cours` INT(10) NULL DEFAULT NULL , PRIMARY KEY (`cours_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `edusy`.`cours_enrollment` ( `user_id` VARCHAR(30) NOT NULL , `cours_id` VARCHAR(30) NOT NULL , `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , `price_paid` INT(30) NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `edusy`.`trainer` ( `trainer_id` VARCHAR(30) NOT NULL , `trainer_name` TEXT NOT NULL , `tag` VARCHAR(30) NOT NULL , `sort_qualification` VARCHAR(100) NOT NULL , `long_qualification` VARCHAR(500) NOT NULL , `past_record` VARCHAR(300) NOT NULL ) ENGINE = InnoDB;
+
