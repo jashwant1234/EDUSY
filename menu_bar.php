@@ -3,7 +3,7 @@
   <!-- Start your project here-->  
   <nav class="navbar navbar-expand-lg navbar-dark blue-gradient">
   <a class="navbar-brand" href="#">
-    <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+    <img src="img/LOGO.png" width="30" height="30" alt="" loading="lazy">
   </a>
   <a class="navbar-brand" href="#"><img rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

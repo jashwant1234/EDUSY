@@ -86,12 +86,6 @@ if(isset($_POST['save'])){
         <!-- Material form subscription -->
     </div>
 
-
-
-
-
-
-
 </body>
 
 <?php include "../footer.php"; ?>

@@ -29,55 +29,18 @@
     <script type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <?php include '../menu_bar.php'; 
-    include '../config.php';
-    if(isset($_POST['save'])){
-        if(isset($_FILES['upload_file'])){
-            $errors = array();
-            $file_name = $_FILES['upload_file']['name'];
-            $file_size = $_FILES['upload_file']['size'];
-            $file_temp = $_FILES['upload_file']['tmp_name'];
-            $file_type = $_FILES['upload_file']['type'];
-     
-                if($file_size > 2097152){
-                    $errors[]="file size must be under 2mb";
-                }
-                if(empty($errors) == true){
-                    move_uploaded_file($file_temp,"img/cours/".$file_name);
-                }else{
-                    print_r($errors);
-                    die();
-                }
-        }
-        $name = mysqli_real_escape_string($conn,$_POST['name']);
-        $tag1 = mysqli_real_escape_string($conn,$_POST['tag1']);
-        if($_POST['tag2'] == null){
-            $tag2 = "null";
-        }else{
-            $tag2 = mysqli_real_escape_string($conn,$_POST['tag2']);
-        }
-        if($_POST['tag3'] == null){
-            $tag3 = "null";
-        }else{
-            $tag3 = mysqli_real_escape_string($conn,$_POST['tag3']);    
-        }
-        $short_desc = mysqli_real_escape_string($conn,$_POST['short_desc']);
-        $long_desc = mysqli_real_escape_string($conn,$_POST['long_desc']);
-        $trainer_id = mysqli_real_escape_string($conn,$_POST['trainer_id']);
-        $duration = mysqli_real_escape_string($conn,$_POST['duration']);
-        $price = mysqli_real_escape_string($conn,$_POST['price']);
-        $cours_id = $user_id=uniqid('CO');
-        $sql = "INSERT INTO courses(cours_id,cours_name,cours_img,tag_1,tag_2,tag_3,short_desc,long_desc,trainer_id,duration,cours_price)
-                VALUES ('{$cours_id}','{$name}','{$file_name}','{$tag1}','{$tag2}','{$tag3}','{$short_desc}','{$long_desc}','{$trainer_id}','{$duration}','{$price}');
-         ";
-          if(mysqli_query($conn,$sql)){
-            header("Location: {$url}/admin/all_courses.php");
-          }else{
-              echo "<div class='alert alert-danger'>Query Failed.</div>";
-          }
-    }
-    ?>
+    <?php include '../menu_bar.php'; ?>
 </head>
+<?php
+include "../config.php";
+if(isset($_POST['save'])){
+    $cat=mysqli_real_escape_string($conn,$_POST['cat']);
+    $color=mysqli_real_escape_string($conn,$_POST['color']);
+    $sql = "INSERT INTO categories_cours (categories,color) VALUES ('{$cat}','{$color}');";
+    mysqli_query($conn, $sql);
+    header("Location: {$url}/admin/show_all_categories.php");
+}
+?>
 <body>
 
     <!-- Material form register -->
@@ -188,6 +151,8 @@
         </div>
         <!-- Material form subscription -->
     </div>
-</body>
+</body> 
+
 <?php include "../footer.php"; ?>
+
 </html>
