@@ -113,9 +113,9 @@
                 <td>"; if($row['cours_discount'] == null) echo "null";else echo $row['cours_discount']; echo "</td>
                 <td>"; if($row['top_cours'] == null) echo "null";else echo $row['top_cours']; echo "</td>
                 <td>{$row['date']}</td>
-                <td><a href='{$url}/admin/cours_update.php?{$row['cours_id']}'><i class='far fa-edit'></i></a></td>
-                <td><i class='fas fa-trash'></i></td>
-            </tr>";
+                <td><a href='{$url}/admin/cours_update.php?id={$row['cours_id']}'><i class='far fa-edit'></i></a></td>
+                <td><a href='{$url}/admin/cours_update.php?id={$row['cours_id']}'><i class='fas fa-trash'></i></a></td>
+            </tr>"; 
             }
             ?>
         </tbody>

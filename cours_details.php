@@ -33,10 +33,14 @@
 
 <body>
   <!-- Start your project here-->
-
-
-
-
+  <?php
+            include "config.php";
+            $id = mysqli_real_escape_string($conn,$_GET['id']);
+            $sql = "SELECT * FROM courses WHERE cours_id='{$id}';";
+            $result = mysqli_query($conn, $sql) or die("Query Failed.");
+            $x=1;
+            while ($row = mysqli_fetch_assoc($result)) {
+              ?>
 
 
   <div class="container mt-5 pt-3">
@@ -59,42 +63,13 @@
 
                 <div class="carousel-item active">
 
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/17.jpg" alt="First slide" class="img-fluid">
-
-                </div>
-
-                <div class="carousel-item">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/18.jpg" alt="Second slide" class="img-fluid">
-
-                </div>
-
-                <div class="carousel-item">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/19.jpg" alt="Third slide" class="img-fluid">
+                  <img src="admin/img/cours/<?php echo $row['cours_img']?>" alt="First slide" class="img-fluid">
 
                 </div>
 
               </div>
               <!-- Slides -->
 
-              <!-- Thumbnails -->
-              <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                <span class="sr-only">Previous</span>
-
-              </a>
-
-              <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                <span class="sr-only">Next</span>
-
-              </a>
-              <!-- Thumbnails -->
 
             </div>
             <!-- Carousel Wrapper -->
@@ -105,32 +80,59 @@
 
             <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
 
-              <strong>Sony headphones</strong>
+              <strong><?php echo $row['cours_name']?></strong>
 
             </h2>
 
-            <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">bestseller</span>
+            <?php
+                  $sql="SELECT * FROM categories_cours;";
+                  $result1 = mysqli_query($conn, $sql) or die("Query Failed.");$tag_1;$tag_2;$tsg_3;
+                  while ($row1 = mysqli_fetch_assoc($result1)) {
+                    if($row['tag_1']==$row1['categories'])$tag_1=$row1['color'];
+                    if($row['tag_2']==$row1['categories'])$tag_2=$row1['color'];
+                    if($row['tag_3']==$row1['categories'])$tag_3=$row1['color'];
+                  }
+                  echo "<span class='badge badge-{$tag_1} mb-2'>{$row['tag_1']}</span>&nbsp;";
+                  if($row['tag_2']!="null")
+                  echo "<span class='badge badge-{$tag_2} mb-2'>{$row['tag_2']}</span>&nbsp;";
+                  if($row['tag_3']!="null")
+                  echo "<span class='badge badge-{$tag_3} mb-2'>{$row['tag_3']}</span>";
+                ?>
 
-            <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
+<?php
 
-              <span class="red-text font-weight-bold">
+if($row['cours_discount']==null)
+echo " <h3 class='h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4'>
+<span class='float-left'>
 
-                <strong>$49</strong>
+    <strong>&#8377;{$row['cours_price']}</strong>
 
-              </span>
+  </span>
+  </h3>";
 
-              <span class="grey-text">
+else
+  echo "   <h3 class='h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4'>
 
-                <small>
+    <span class='red-text font-weight-bold'>
 
-                  <s>$89</s>
+      <strong>&#8377;{$row['cours_discount']}</strong>
 
-                </small>
+    </span>
 
-              </span>
+    <span class='grey-text'>
 
-            </h3>
+      <small>
 
+        <s>&#8377;{$row['cours_price']}</s>
+
+      </small>
+
+    </span>
+
+  </h3>";
+
+?>
+            
             <!-- Accordion wrapper -->
             <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
 
@@ -256,6 +258,8 @@
 
             </div>
             <!-- Accordion wrapper -->
+            <?php } ?>
+
 
             <!-- Add to Cart -->
             <section class="color">
@@ -280,6 +284,7 @@
             </section>
             <!-- Add to Cart -->
 
+          
           </div>
 
         </div>
@@ -288,268 +293,6 @@
 
     </section>
 
-    <!-- Section: Product detail -->
-    <div class="divider-new">
-
-      <h3 class="h3-responsive font-weight-bold blue-text mx-3">Product Reviews</h3>
-
-    </div>
-
-    <!-- Product Reviews -->
-    <section id="reviews" class="pb-5">
-
-      <!-- Main wrapper -->
-      <div class="comments-list text-center text-md-left">
-
-        <!-- First row -->
-        <div class="row mb-5">
-
-          <!-- Image column -->
-          <div class="col-sm-2 col-12 mb-3">
-
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (8).jpg" alt="sample image" class="avatar rounded-circle z-depth-1-half">
-
-          </div>
-          <!-- Image column -->
-
-          <!-- Content column -->
-          <div class="col-sm-10 col-12">
-
-            <a>
-
-              <h5 class="user-name font-weight-bold">John Doe</h5>
-
-            </a>
-
-            <!-- Rating -->
-            <ul class="rating">
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-            </ul>
-
-            <div class="card-data">
-
-              <ul class="list-unstyled mb-1">
-
-                <li class="comment-date font-small grey-text">
-
-                  <i class="far fa-clock-o"></i> 05/10/2015</li>
-
-              </ul>
-
-            </div>
-
-            <p class="dark-grey-text article">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis
-
-              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur
-
-              sint occaecat cupidatat non proident.</p>
-
-          </div>
-          <!-- Content column -->
-
-        </div>
-        <!-- First row -->
-
-        <!-- Second row -->
-        <div class="row mb-5">
-
-          <!-- Image column -->
-          <div class="col-sm-2 col-12 mb-3">
-
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (30).jpg" alt="sample image" class="avatar rounded-circle z-depth-1-half">
-
-          </div>
-          <!-- Image column -->
-
-          <!-- Content column -->
-          <div class="col-sm-10 col-12">
-
-            <a>
-
-              <h5 class="user-name font-weight-bold">Lily Brown</h5>
-
-            </a>
-
-            <!-- Rating -->
-            <ul class="rating">
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-            </ul>
-
-            <div class="card-data">
-
-              <ul class="list-unstyled mb-1">
-
-                <li class="comment-date font-small grey-text">
-
-                  <i class="far fa-clock-o"></i> 05/10/2015</li>
-
-              </ul>
-
-            </div>
-
-            <p class="dark-grey-text article">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis
-
-              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur
-
-              sint occaecat cupidatat non proident.</p>
-
-          </div>
-          <!-- Content column -->
-
-        </div>
-        <!-- Second row -->
-
-        <!-- Third row -->
-        <div class="row mb-5">
-
-          <!-- Image column -->
-          <div class="col-sm-2 col-12 mb-3">
-
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (28).jpg" alt="sample image" class="avatar rounded-circle z-depth-1-half">
-
-          </div>
-          <!-- Image column -->
-
-          <!-- Content column -->
-          <div class="col-sm-10 col-12">
-
-            <a>
-
-              <h5 class="user-name font-weight-bold">Martha Smith</h5>
-
-            </a>
-
-            <!-- Rating -->
-            <ul class="rating">
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-              <li>
-
-                <i class="fas fa-star blue-text"></i>
-
-              </li>
-
-            </ul>
-
-            <div class="card-data">
-
-              <ul class="list-unstyled mb-1">
-
-                <li class="comment-date font-small grey-text">
-
-                  <i class="far fa-clock-o"></i> 05/10/2015</li>
-
-              </ul>
-
-            </div>
-
-            <p class="dark-grey-text article">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis
-
-              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur
-
-              sint occaecat cupidatat non proident.</p>
-
-          </div>
-          <!-- Content column -->
-
-        </div>
-        <!-- Third row -->
-
-      </div>
-      <!-- Main wrapper -->
-
-    </section>
-
-    <!-- Product Reviews -->
     <div class="divider-new">
 
       <h3 class="h3-responsive font-weight-bold blue-text mx-3">Related Products</h3>
@@ -1229,322 +972,6 @@
 
           </div>
           <!-- Second slide -->
-
-          <!-- Third slide -->
-          <div class="carousel-item">
-
-            <div class="col-md-4 mb-4">
-
-              <!-- Card -->
-              <div class="card card-ecommerce">
-
-                <!-- Card image -->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-
-                <!-- Card image -->
-
-                <!-- Card content -->
-                <div class="card-body">
-
-                  <!-- Category & Title -->
-                  <h5 class="card-title mb-1">
-
-                    <strong>
-
-                      <a href="" class="dark-grey-text">Asus CT-567</a>
-
-                    </strong>
-
-                  </h5>
-
-                  <span class="badge grey mb-2">best rated</span>
-
-                  <!-- Rating -->
-                  <ul class="rating">
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                  </ul>
-
-                  <!-- Card footer -->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left">
-
-                        <strong>1439$</strong>
-
-                      </span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
-
-                          <i class="fas fa-shopping-cart ml-3"></i>
-
-                        </a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content -->
-
-              </div>
-              <!-- Card -->
-
-            </div>
-
-            <div class="col-md-4 clearfix d-none d-md-block mb-4">
-
-              <!-- Card -->
-              <div class="card card-ecommerce">
-
-                <!-- Card image -->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/7.jpg" class="img-fluid" alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image -->
-
-                <!-- Card content -->
-                <div class="card-body">
-
-                  <!-- Category & Title -->
-                  <h5 class="card-title mb-1">
-
-                    <strong>
-
-                      <a href="" class="dark-grey-text">Dell 786i</a>
-
-                    </strong>
-
-                  </h5>
-
-                  <span class="badge badge-info mb-2">new</span>
-
-                  <!-- Rating -->
-                  <ul class="rating">
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star grey-text"></i>
-
-                    </li>
-
-                  </ul>
-
-                  <!-- Card footer -->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left">
-
-                        <strong>1439$</strong>
-
-                      </span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
-
-                          <i class="fas fa-shopping-cart ml-3"></i>
-
-                        </a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content -->
-
-              </div>
-              <!-- Card -->
-
-            </div>
-
-            <div class="col-md-4 clearfix d-none d-md-block mb-4">
-
-              <!-- Card -->
-              <div class="card card-ecommerce">
-
-                <!-- Card image -->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/10.jpg" class="img-fluid" alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image -->
-
-                <!-- Card content -->
-                <div class="card-body">
-
-                  <!-- Category & Title -->
-                  <h5 class="card-title mb-1">
-
-                    <strong>
-
-                      <a href="" class="dark-grey-text">Headphones</a>
-
-                    </strong>
-
-                  </h5>
-
-                  <span class="badge badge-info mb-2">new</span>
-
-                  <!-- Rating -->
-                  <ul class="rating">
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                    <li>
-
-                      <i class="fas fa-star blue-text"></i>
-
-                    </li>
-
-                  </ul>
-
-                  <!-- Card footer -->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left">
-
-                        <strong>1439$</strong>
-
-                      </span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
-
-                          <i class="fas fa-shopping-cart ml-3"></i>
-
-                        </a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content -->
-
-              </div>
-              <!-- Card -->
-
-            </div>
-
-          </div>
-          <!-- Third slide -->
 
         </div>
         <!-- Slides -->
