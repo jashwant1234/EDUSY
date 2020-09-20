@@ -307,20 +307,21 @@
                     <div class="row mb-0">
 
                     <?php
+                      $dis=(int)$row['cours_price']-(int)$row['cours_discount'];
 
-                    if($row['cours_discount']==null)
+                    if($row['cours_discount']=="null"){
                     echo "<span class='float-left'>
 
                         <strong>&#8377;{$row['cours_price']}</strong>
 
                       </span>";
-
+                    }
                   else
                       echo "<h5 class='mb-0 pb-0 mt-1 font-weight-bold'>
 
                         <span class='red-text'>
 
-                          <strong>&#8377;{$row['cours_discount']}</strong>
+                          <strong>&#8377;{$dis}</strong>
 
                         </span>
 

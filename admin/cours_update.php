@@ -34,11 +34,37 @@
 <?php
 include "../config.php";
 if(isset($_POST['save'])){
-    $cat=mysqli_real_escape_string($conn,$_POST['cat']);
-    $color=mysqli_real_escape_string($conn,$_POST['color']);
-    $sql = "INSERT INTO categories_cours (categories,color) VALUES ('{$cat}','{$color}');";
-    mysqli_query($conn, $sql);
-    header("Location: {$url}/admin/show_all_categories.php");
+   if(empty($_FILES['new_img']['name'])){
+    $file_name = $_POST['old_img'];
+   }
+   else{
+    $errors = array();
+    $file_name = $_FILES['new_img']['name'];
+    $file_size = $_FILES['new_img']['size'];
+    $file_temp = $_FILES['new_img']['tmp_name'];
+    $file_type = $_FILES['new_img']['type'];
+
+        if($file_size > 2097152){
+            $errors[]="file size must be under 2mb";
+        }
+        if(empty($errors) == true){
+            move_uploaded_file($file_temp,"img/cours/".$file_name);
+        }else{
+            print_r($errors);
+            die();
+        }
+   }
+
+   if(empty($_POST['top_cours'])) $top='null';else $top="yes";
+   $sql = "UPDATE courses SET cours_name='{$_POST['name']}',cours_img='{$file_name}',tag_1='{$_POST['tag1']}',tag_2='{$_POST['tag2']}',
+   tag_3='{$_POST['tag3']}',short_desc='{$_POST['short_desc']}',long_desc='{$_POST['long_desc']}',trainer_id='{$_POST['trainer_id']}',
+   duration='{$_POST['duration']}',cours_price='{$_POST['price']}',cours_discount='{$_POST['discount']}',top_cours='{$top}' WHERE cours_id='{$_GET['id']}';";
+   echo $sql;
+    if(mysqli_query($conn,$sql)){
+        header("Location: {$url}/admin/all_courses.php");
+      }else{
+          echo "<div class='alert alert-danger'>Query Failed.</div>";
+      }
 }
 else{
     $id=$_GET['id'];
@@ -66,13 +92,13 @@ else{
                                 <a href="" target="_blank">Update Cours</a>
                             </p>
                             <div class="md-form mt-3">
-                                <input type="hidden" id="materialSubscriptionFormPasswords" class="form-control" name="id" value="<?php echo $row1['cousr_id'];?>" required>
+                                <input type="hidden" name="cid" value="<?php echo $row1['cousr_id'];?>" >
                                 
                             </div> 
                             <!-- Name -->
                             <div class="md-form mt-3">
                             <h6 style=" text-align: left;">Cousr Name</h6>
-                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="name" value="<?php echo $row1['cours_name'];?>" required>
+                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="name" value="<?php echo $row1['cours_name'];?>" >
                                
                             </div>
                             <img src="img/cours/<?php echo $row1['cours_img'];?>" class="img-thumbnail" style="width: 200px;">
@@ -80,7 +106,8 @@ else{
                             
                                 <div class="btn btn-primary btn-sm float-left">
                                     <span>Choose file</span>
-                                    <input type="file" name="upload_file" required>
+                                    <input type="file" name="new_img">
+                                    <input type="hidden" name="old_img" value="<?php echo $row1['cours_img'];?>">
                                 </div>
                                 
                                 <div class="file-path-wrapper">
@@ -140,36 +167,40 @@ else{
                             <hr>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea3">Short Description For Cours</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea3" rows="5" name="short_desc" required><?php echo $row1['short_desc'];?></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea3" rows="5" name="short_desc" ><?php echo $row1['short_desc'];?></textarea>
                             </div>
                             <hr>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea3">Long Description For Cours</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="long_desc" required><?php echo $row1['long_desc'];?></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="long_desc" ><?php echo $row1['long_desc'];?></textarea>
                             </div>
                             <!-- E-mai -->
                             <div class="md-form mt-3">
                                 <h6 style=" text-align: left;">Trainer Id</h6>
-                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="trainer_id" value="<?php echo $row1['trainer_id'];?>" required>
+                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="trainer_id" value="<?php echo $row1['trainer_id'];?>" >
                             </div>
 
                             <div class="md-form mt-3">
                             <h6 style=" text-align: left;">Duration Of cours</h6>
-                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="duration" value="<?php echo $row1['duration'];?>" required>
+                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="duration" value="<?php echo $row1['duration'];?>" >
                                 
                             </div>
 
                             <div class="md-form mt-3">
                             <h6 style=" text-align: left;">Price Of the cours</h6>
-                            <input type="number" id="materialSubscriptionFormPasswords" class="form-control" name="price" value="<?php echo $row1['cours_price'];?>" required>
+                            <input type="number" id="materialSubscriptionFormPasswords" class="form-control" name="price" value="<?php echo $row1['cours_price'];?>" >
                             </div>
                             <div class="md-form mt-3">
-                            <h6 style=" text-align: left;">Discount in %</h6>
-                            <input type="number" id="materialSubscriptionFormPasswords" class="form-control" name="discount" value="<?php echo $row1['cours_discount'];?>" required>
+                            <h6 style=" text-align: left;">Discount</h6>
+                            <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="discount" value="<?php                            
+                            
+                                echo $row1['cours_discount'];
+
+                            ?>" >
                             </div> 
                             
                             <div class=" form-check">
-                            <input  type="checkbox" class="form-check-input" id="materialUnchecked" name="top_cours" <?php if($row1['cours_discount']=='null')echo 'checked';}}?> >
+                            <input  type="checkbox" class="form-check-input" id="materialUnchecked" name="top_cours" <?php if($row1['top_cours']!='null')echo 'checked';}}?> >
                             <label style="float:left;" class="form-check-label" for="materialUnchecked">add to top cours</label>
                             </div>
                                 

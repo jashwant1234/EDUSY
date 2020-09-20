@@ -114,7 +114,7 @@
                 <td>"; if($row['top_cours'] == null) echo "null";else echo $row['top_cours']; echo "</td>
                 <td>{$row['date']}</td>
                 <td><a href='{$url}/admin/cours_update.php?id={$row['cours_id']}'><i class='far fa-edit'></i></a></td>
-                <td><a href='{$url}/admin/cours_update.php?id={$row['cours_id']}'><i class='fas fa-trash'></i></a></td>
+                <td><a href='{$url}/admin/cours_delete.php?id={$row['cours_id']}'><i class='fas fa-trash'></i></a></td>
             </tr>"; 
             }
             ?>
