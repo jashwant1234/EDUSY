@@ -261,9 +261,9 @@
                 <!-- Card image -->
                 <div class="view overlay">
 
-                  <img src="admin/img/cours/<?php echo $row['cours_img']?>" class="img-fluid" alt="">
+                  <img src="admin/img/cours/<?php echo $row['cours_img'];?>" class="img-fluid" alt="<?php echo $row['cours_img'];?>">
 
-                  <a href="cours_details.php?id=<?php echo $row['cours_id']?>">
+                  <a href="cours_details.php?id=<?php echo $row['cours_id'];?>">
 
                     <div class="mask rgba-white-slight"></div>
 

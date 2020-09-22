@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +19,14 @@
   <link rel="stylesheet" href="css/animate.min.css">
 
   <style>
-    .acol{
+    .parent {
+      display: flex;
+    }
+
+    .acol {
       background-color: blue;
     }
+
     .carousel-item {
       height: 100vh;
     }
@@ -136,7 +140,7 @@
       bottom: 20px;
     }
   </style>
-  
+
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
@@ -148,10 +152,9 @@
   <script type="text/javascript"></script>
 
   <?php
-   include 'menu_bar.php'; 
-   include 'config.php';
+  include 'menu_bar.php';
+  include 'config.php';
   ?>
-
 </head>
 
 <body>
@@ -211,7 +214,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  
+
   <!--End carousel-->
 
   <div class="container jumbotrun">
@@ -393,7 +396,7 @@
   </div>
 
   <!--Streak-->
-    
+
   <div class="streak streak-photo streak-long-2" style="background-image: url('https://mdbootstrap.com/img/Others/doctor.jpg');">
     <div class="flex-center mask rgba-blue-strong">
       <div class="container text-center white-text">
@@ -437,7 +440,7 @@
       </div>
     </div>
   </div>
-  
+
   <!--/Streak-->
 
 
@@ -453,167 +456,71 @@
 
         <!--Grid row-->
         <div class="row mb-5 pb-3">
+          <?php
+          include "config.php";
+          $sql = "SELECT * FROM courses WHERE top_cours='yes';";
+          $result = mysqli_query($conn, $sql) or die("Query Failed.");
+          $x = 1;
+          while ($row = mysqli_fetch_assoc($result)) {
+            if ($x > 4) break;
+          ?>
+            <!--Grid column-->
 
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card card-cascade narrower">
+            <div class="col-lg-3 col-md-6 mb-4 wow fadeIn" data-wow-delay="0.4s">
+              <div class="card card-cascade narrower">
 
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg" alt="Card image cap">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                  <img class="card-img-top" src="admin/img/cours/<?php echo $row['cours_img']; ?>" alt="<?php echo $row['cours_img']; ?>">
+                  <a href="cours_details.php?id=<?php echo $row['cours_id']; ?>">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade">
+
+                  <!-- Label -->
+                  <?php
+                  $sql = "SELECT * FROM categories_cours;";
+                  $result1 = mysqli_query($conn, $sql) or die("Query Failed.");
+                  $tag_1;
+                  $tag_2;
+                  $tsg_3;
+                  while ($row1 = mysqli_fetch_assoc($result1)) {
+                    if ($row['tag_1'] == $row1['categories']) $tag_1 = $row1['color'];
+                    if ($row['tag_2'] == $row1['categories']) $tag_2 = $row1['color'];
+                    if ($row['tag_3'] == $row1['categories']) $tag_3 = $row1['color'];
+                  }
+                  echo "<span class='badge badge-{$tag_1} mb-2'>{$row['tag_1']}</span>&nbsp;";
+                  if ($row['tag_2'] != "null")
+                    echo "<span class='badge badge-{$tag_2} mb-2'>{$row['tag_2']}</span>&nbsp;";
+                  if ($row['tag_3'] != "null")
+                    echo "<span class='badge badge-{$tag_3} mb-2'>{$row['tag_3']}</span>";
+                  ?>
+                  <!-- Title -->
+                  <h4 class="font-weight-bold card-title"><?php echo $row['cours_name'] ?></h4>
+                  <!-- Text -->
+                  <p class="card-text"><?php echo $row['short_desc'] ?>.</p>
+
+                  <!-- Button -->
+                  <a class="btn btn-unique" href="cours_details.php?id=<?php echo $row['cours_id'] ?>">Button</a>
+                </div>
               </div>
-
-              <!-- Card content -->
-              <div class="card-body card-body-cascade">
-
-                <!-- Label -->
-                <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Culinary</h5>
-                <!-- Title -->
-                <h4 class="font-weight-bold card-title">Cheat day inspirations</h4>
-                <!-- Text -->
-                <p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-                  laboriosam, nisi ut aliquid ex ea commodi.</p>
-                <!-- Button -->
-                <a class="btn btn-unique">Button</a>
-
-              </div>
-
             </div>
-          </div>
-          <!--Grid column-->
+            <!--Grid column-->
+          <?php $x++;
+          } ?>
 
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 wow fadeIn" data-wow-delay="0.4s">
-
-            <!--Card Light-->
-            <div class="card">
-              <!--Card image-->
-              <div class="view overlay">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/40.jpg" class="card-img-top" alt="">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--/.Card image-->
-              <!--Card content-->
-              <div class="card-body">
-
-                <!--Title-->
-                <h4 class="card-title darkgrey-text">
-                  <strong>Chemistry</strong>
-                </h4>
-                <hr>
-                <!--Text-->
-                <p class="font-small">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-                <a href="#" class="black-text d-flex flex-row-reverse">
-                  <p class="waves-effect p-2 font-small blue-text mb-0">Read more
-                    <i class="fas fa-long-arrow-alt-right ml-2" aria-hidden="true"></i>
-                  </p>
-                </a>
-              </div>
-              <!--/.Card content-->
-            </div>
-            <!--/.Card Light-->
-
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 wow fadeIn" data-wow-delay="0.4s">
-
-            <!--Card Light-->
-            <div class="card">
-              <!--Card image-->
-              <div class="view overlay">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/56.jpg" class="card-img-top" alt="">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--/.Card image-->
-
-              <!--Card content-->
-              <div class="card-body">
-
-                <!--Title-->
-                <h4 class="card-title darkgrey-text">
-                  <strong>Journalism</strong>
-                </h4>
-                <hr>
-                <!--Text-->
-                <p class="font-small">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-                <a href="#" class="black-text d-flex flex-row-reverse">
-                  <p class="waves-effect p-2 font-small blue-text mb-0">Read more
-                    <i class="fas fa-long-arrow-alt-right ml-2" aria-hidden="true"></i>
-                  </p>
-                </a>
-              </div>
-              <!--/.Card content-->
-            </div>
-            <!--/.Card Light-->
-
-          </div>
-          <!--Grid column-->
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 wow fadeIn" data-wow-delay="0.4s">
-
-            <!--Card Light-->
-            <div class="card">
-              <!--Card image-->
-              <div class="view overlay">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/57.jpg" class="card-img-top" alt="">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--/.Card image-->
-              <!--Card content-->
-              <div class="card-body">
-
-                <!--Title-->
-                <h4 class="card-title darkgrey-text">
-                  <strong>Computer science</strong>
-                </h4>
-                <hr>
-                <!--Text-->
-                <p class="font-small">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-                <a href="#" class="black-text d-flex flex-row-reverse">
-                  <p class="waves-effect p-2 font-small blue-text mb-0">Read more
-                    <i class="fas fa-long-arrow-alt-right ml-2" aria-hidden="true"></i>
-                  </p>
-                </a>
-              </div>
-              <!--/.Card content-->
-            </div>
-            <!--/.Card Light-->
-
-          </div>
-          <!--Grid column-->
 
         </div>
         <!--First row-->
-
       </section>
       <!--Section: Blog v.2-->
-
     </div>
   </div>
-   
   <!--End Multi Item Carousel-->
   <!--Streak-->
-
   <div class="streak streak-photo streak-md" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Things/full%20page/img%20%287%29.jpg');">
     <div class="flex-center mask rgba-indigo-strong">
       <div class="text-center white-text">
@@ -626,17 +533,17 @@
       </div>
     </div>
   </div>
-  
+
   <!--Streak-->
 
   <!--Streak-->
 
   <div class="container">
-   
+
     <!--Carousel Wrapper-->
     <hr>
     <h2 class="text-center mb-5 my-5 pt-4 pb-4 font-weight-bold">Our Team</h2>
-   
+
     <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
 
       <!--Controls-->
@@ -751,7 +658,7 @@
     });
   </script>
 
-<!--Streak-->
+  <!--Streak-->
 
   <div class="container">
     <h2 class="text-center mb-5 my-5 pt-4 pb-4 font-weight-bold">Become a Trainer</h2>
@@ -771,73 +678,73 @@
 
               <!-- Header -->
               <h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>Write to us:</h3>
+              <form action="become_a_triner_save.php" method="POST" enctype="multipart/form-data">
+                <!-- Grid row -->
+                <div class="row">
 
-              <!-- Grid row -->
-              <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" id="form-contact-name" class="form-control">
-                    <label for="form-contact-name" class="">Your name</label>
+                  <!-- Grid column -->
+                  <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="form-contact-name" class="form-control" name="name">
+                      <label for="form-contact-name" class="">Your name</label>
+                    </div>
                   </div>
-                </div>
-                <!-- Grid column -->
+                  <!-- Grid column -->
 
-                <!-- Grid column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" id="form-contact-email" class="form-control">
-                    <label for="form-contact-email" class="">Your email</label>
+                  <!-- Grid column -->
+                  <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="form-contact-email" class="form-control" name="email">
+                      <label for="form-contact-email" class="">Your email</label>
+                    </div>
                   </div>
+                  <!-- Grid column -->
+
                 </div>
-                <!-- Grid column -->
+                <!-- Grid row -->
 
-              </div>
-              <!-- Grid row -->
+                <!-- Grid row -->
+                <div class="row">
 
-              <!-- Grid row -->
-              <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" id="form-contact-phone" class="form-control">
-                    <label for="form-contact-phone" class="">Your phone</label>
+                  <!-- Grid column -->
+                  <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="form-contact-phone" class="form-control" name="phone_number">
+                      <label for="form-contact-phone" class="">Your phone</label>
+                    </div>
                   </div>
-                </div>
-                <!-- Grid column -->
+                  <!-- Grid column -->
 
-                <!-- Grid column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" id="form-contact-company" class="form-control">
-                    <label for="form-contact-company" class="">Your company</label>
+                  <!-- Grid column -->
+                  <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="form-contact-company" class="form-control" name="exprience">
+                      <label for="form-contact-company" class="">Your exprience</label>
+                    </div>
                   </div>
+                  <!-- Grid column -->
+
                 </div>
-                <!-- Grid column -->
+                <!-- Grid row -->
 
-              </div>
-              <!-- Grid row -->
+                <!-- Grid row -->
+                <div class="row">
 
-              <!-- Grid row -->
-              <div class="row">
+                  <!-- Grid column -->
+                  <div class="col-md-12">
+                    <div class="md-form mb-0">
+                      <textarea type="text" id="form-contact-message" class="form-control md-textarea" name="message" rows="3"></textarea>
+                      <label for="form-contact-message">Your message</label>
 
-                <!-- Grid column -->
-                <div class="col-md-12">
-                  <div class="md-form mb-0">
-                    <textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3"></textarea>
-                    <label for="form-contact-message">Your message</label>
-                    <a class="btn-floating btn-lg blue">
-                      <i class="far fa-paper-plane"></i>
-                    </a>
+                      <button class="btn-floating light-blue" type="submit" name="save"><i class="fas fa-rocket" aria-hidden="true"></i>
+                      </button>
+                    </div>
                   </div>
+                  <!-- Grid column -->
+
                 </div>
-                <!-- Grid column -->
-
-              </div>
-              <!-- Grid row -->
-
+                <!-- Grid row -->
+              </form>
             </div>
 
           </div>
@@ -900,4 +807,5 @@
 
 </body>
 <?php include "footer.php"; ?>
-</html> 
+
+</html>
