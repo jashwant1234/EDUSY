@@ -27,7 +27,6 @@
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
-
   <?php include 'menu_bar.php'; ?>
 </head>
 
@@ -41,10 +40,7 @@
   $x = 1;
   while ($row = mysqli_fetch_assoc($result)) {
   ?>
-
-
     <div class="container mt-5 pt-3">
-
       <!-- Section: Product detail -->
       <section id="productDetails" class="pb-5">
 
@@ -69,13 +65,9 @@
 
                 </div>
                 <!-- Slides -->
-
-
               </div>
-              <!-- Carousel Wrapper -->
-
+              < !-- Carousel Wrapper -->
             </div>
-
             <div class="col-lg-5 mr-3 text-center text-md-left">
 
               <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
@@ -165,14 +157,7 @@
 
                     <div class="card-body">
 
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                      wolf moon officia aute,
-
-                      non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                      moon
-
-                      tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-
+                      <?php echo $row['long_desc'] ?>
                     </div>
 
                   </div>
@@ -219,66 +204,29 @@
 
                 </div>
                 <!-- Accordion card -->
-
-                <!-- Accordion card -->
-                <div class="card">
-
-                  <!-- Card header -->
-                  <div class="card-header" role="tab" id="headingThree3">
-
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
-
-                      <h5 class="mb-0">
-
-                        Shipping
-
-                        <i class="fas fa-angle-down rotate-icon"></i>
-
-                      </h5>
-
-                    </a>
-
-                  </div>
-
-                  <!-- Card body -->
-                  <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
-
-                    <div class="card-body">
-
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                      wolf moon officia aute,
-
-                      non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                      moon
-
-                      tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Accordion card -->
-
               </div>
               <!-- Accordion wrapper -->
             <?php } ?>
-
-
             <!-- Add to Cart -->
             <section class="color">
 
               <div class="mt-5">
 
-
                 <div class="row mt-3 mb-4">
 
                   <div class="col-md-12 text-center text-md-left text-md-right">
-
-                    <button class="btn btn-primary btn-rounded">
-
-                      Join Now</button>
-
+                    <?php
+                    include "config.php";
+                    if (isset($_SESSION["first_name"])) {
+                      echo '<a href="payment.php"> <button class="btn btn-primary btn-rounded">
+                        Join Now</button>
+                  </a>';
+                    } else {
+                      echo '<a href="login.php"> <button class="btn btn-primary btn-rounded">
+                        Join Now</button>
+                  </a>';
+                    }
+                    ?>
                   </div>
 
                 </div>

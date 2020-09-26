@@ -57,7 +57,7 @@ if(isset($_POST['save'])){
 
    if(empty($_POST['top_cours'])) $top='null';else $top="yes";
    $sql = "UPDATE courses SET cours_name='{$_POST['name']}',cours_img='{$file_name}',tag_1='{$_POST['tag1']}',tag_2='{$_POST['tag2']}',
-   tag_3='{$_POST['tag3']}',short_desc='{$_POST['short_desc']}',long_desc='{$_POST['long_desc']}',trainer_id='{$_POST['trainer_id']}',
+   tag_3='{$_POST['tag3']}',short_desc='{$_POST['short_desc']}',long_desc='{$_POST['long_desc']}',link='{$_POST['link']}',trainer_id='{$_POST['trainer_id']}',
    duration='{$_POST['duration']}',cours_price='{$_POST['price']}',cours_discount='{$_POST['discount']}',top_cours='{$top}' WHERE cours_id='{$_GET['id']}';";
    echo $sql;
     if(mysqli_query($conn,$sql)){
@@ -174,7 +174,12 @@ else{
                                 <label for="exampleFormControlTextarea3">Long Description For Cours</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="long_desc" ><?php echo $row1['long_desc'];?></textarea>
                             </div>
-                            <!-- E-mai -->
+
+                            <div class="md-form mt-3">
+                                <h6 style=" text-align: left;">Video link</h6>
+                                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="link" value="<?php echo $row1['link'];?>" >
+                            </div>
+
                             <div class="md-form mt-3">
                                 <h6 style=" text-align: left;">Trainer Id</h6>
                                 <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="trainer_id" value="<?php echo $row1['trainer_id'];?>" >

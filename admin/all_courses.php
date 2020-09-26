@@ -73,6 +73,8 @@
                 </th>
                 <th class="th-sm">long desc
                 </th>
+                <th class="th-sm">video link
+                </th>
                 <th class="th-sm">trainer name
                 </th>
                 <th class="th-sm">duration
@@ -107,6 +109,7 @@
                 <td>{$row['tag_3']}</td>
                 <td>{$row['short_desc']}</td>
                 <td>{$row['long_desc']}</td>
+                <td>{$row['link']}</td>
                 <td>{$row['trainer_id']}</td>
                 <td>{$row['duration']}</td>
                 <td>{$row['cours_price']}</td>
@@ -136,6 +139,8 @@
                 <th class="th-sm">short desc
                 </th>
                 <th class="th-sm">long desc
+                </th>
+                <th class="th-sm">video link
                 </th>
                 <th class="th-sm">trainer name
                 </th>
