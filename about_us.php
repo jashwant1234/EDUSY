@@ -37,9 +37,6 @@
 
 
 
-
-
-  
   <!-- End your project here-->
   <!-- jQuery -->
 

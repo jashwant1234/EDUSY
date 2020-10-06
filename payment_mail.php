@@ -29,22 +29,38 @@
   <?php include 'menu_bar.php'; ?>
 </head>
 <body>
-  <!-- Start your project here-->  
-  <?php
+    <?php   
 include "config.php";
-if(isset($_POST['save'])){
-    $sql = "INSERT INTO become_a_trainer (name,email,phone_number,experience,message) VALUES ('{$_POST['name']}'
-    ,'{$_POST['email']}','{$_POST['phone_number']}','{$_POST['exprience']}','{$_POST['message']}');";
-    mysqli_query($conn, $sql);
-    $subject='Thank you for contacting us';
-    $body = '<h1 align=center>subscribe my channel</h1>';
-    include "mail.php";
+if (!isset($_SESSION["first_name"])) {
     header("Location: {$url}/index.php");
 }
-?>  
+?>
+  <!-- Start your project here-->  
+  <?php
+  $id = mysqli_real_escape_string($conn, $_GET['id']);
+  $sql = "SELECT * FROM cours_enrollment where cours_id='{$id}' AND user_id='{$_SESSION["user_id"]}';";
+  $result = mysqli_query($conn, $sql) or die("Query Failed.");
+  if(mysqli_num_rows($result)>0){
+            echo "<h3> you have alredy register for the cours</h3>";
+  }
+ else {
+  $sql = "SELECT * FROM courses WHERE cours_id='{$id}';";
+  $result = mysqli_query($conn, $sql) or die("Query Failed.");
+  while ($row = mysqli_fetch_assoc($result)) {
+      $cousr_name=$row['cours_name'];
+      $price = $row['cours_price']-$row['cours_discount'];
+  }
+  $sql = "INSERT INTO cours_enrollment (user_id,cours_id,user_name,cours_name,price) VALUES 
+  ('{$_SESSION["user_id"]}','{$id}','{$_SESSION["user_name"]}','{$cousr_name}','{$price}');";
+  $result = mysqli_query($conn, $sql) or die("Query Failed.");
+  //mail sending
+  $subject='Edusy';
+  $body = '<h1 align=center>subscribe my channel</h1>';
+  include "mail.php";
+}
+  ?>
   <!-- End your project here-->
   <!-- jQuery -->
-
 </body>
 <?php include "footer.php"; ?>
 </html>

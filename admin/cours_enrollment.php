@@ -57,106 +57,50 @@
     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th class="th-sm">cours id
+                <th class="th-sm">user name
                 </th> 
                 <th class="th-sm">cours name
                 </th>
-                <th class="th-sm">cours image
+                <th class="th-sm">price
                 </th>
-                <th class="th-sm">tag1
-                </th>
-                <th class="th-sm">tag2
-                </th>
-                <th class="th-sm">tag3
-                </th>
-                <th class="th-sm">short desc
-                </th>
-                <th class="th-sm">long desc
-                </th>
-                <th class="th-sm">video link
-                </th>
-                <th class="th-sm">trainer name
-                </th>
-                <th class="th-sm">duration
-                </th>
-                <th class="th-sm">cours price
-                </th>
-                <th class="th-sm">cours discount
-                </th>
-                <th class="th-sm">top cours
+                <th class="th-sm">status
                 </th>
                 <th class="th-sm">date
                 </th>
                 <th class="th-sm">edit
-                </th>
-                <th class="th-sm">delete
                 </th>
             </tr>
         </thead>
         <tbody>
             <?php
             include "../config.php";
-            $sql = "SELECT * FROM courses;";
+            $sql = "SELECT * FROM `cours_enrollment`;";
             $result = mysqli_query($conn, $sql) or die("Query Failed.");
             while ($row = mysqli_fetch_assoc($result)) {
                 echo
                     "<tr>
-                <td>{$row['cours_id']}</td>
+                <td>{$row['user_name']}</td>
                 <td>{$row['cours_name']}</td>
-                <td><img src='img/cours/{$row['cours_img']}' width='50' height='50' alt='img'></td>
-                <td>{$row['tag_1']}</td>
-                <td>{$row['tag_2']}</td>
-                <td>{$row['tag_3']}</td>
-                <td>{$row['short_desc']}</td>
-                <td>{$row['long_desc']}</td>
-                <td>{$row['link']}</td>
-                <td>{$row['trainer_id']}</td>
-                <td>{$row['duration']}</td>
-                <td>{$row['cours_price']}</td>
-                <td>"; if($row['cours_discount'] == null) echo "null";else echo $row['cours_discount']; echo "</td>
-                <td>"; if($row['top_cours'] == null) echo "null";else echo $row['top_cours']; echo "</td>
+                <td>{$row['price']}</td>
+                <td>{$row['status']}</td>
                 <td>{$row['date']}</td>
-                <td><a href='{$url}/admin/cours_update.php?id={$row['cours_id']}'><i class='far fa-edit'></i></a></td>
-                <td><a href='{$url}/admin/cours_delete.php?id={$row['cours_id']}'><i class='fas fa-trash'></i></a></td>
-            </tr>"; 
+                <td><a href='{$url}/admin/status_update.php?c_id={$row['cours_id']}&u_id={$row['user_id']}'><i class='far fa-edit'></i></a></td>"; 
             }
             ?>
         </tbody>
         <tfoot>
             <tr>
-                <th class="th-sm">cours id
-                </th>
+            <th class="th-sm">user name
+                </th> 
                 <th class="th-sm">cours name
                 </th>
-                <th class="th-sm">cours image
+                <th class="th-sm">price
                 </th>
-                <th class="th-sm">tag1
-                </th>
-                <th class="th-sm">tag2
-                </th>
-                <th class="th-sm">tag3
-                </th>
-                <th class="th-sm">short desc
-                </th>
-                <th class="th-sm">long desc
-                </th>
-                <th class="th-sm">video link
-                </th>
-                <th class="th-sm">trainer name
-                </th>
-                <th class="th-sm">duration
-                </th>
-                <th class="th-sm">cours price
-                </th>
-                <th class="th-sm">cours discount
-                </th>
-                <th class="th-sm">top cours
+                <th class="th-sm">status
                 </th>
                 <th class="th-sm">date
                 </th>
                 <th class="th-sm">edit
-                </th>
-                <th class="th-sm">delete
                 </th>
             </tr>
         </tfoot>

@@ -66,7 +66,7 @@
                 </div>
                 <!-- Slides -->
               </div>
-              < !-- Carousel Wrapper -->
+              <!-- Carousel Wrapper -->
             </div>
             <div class="col-lg-5 mr-3 text-center text-md-left">
 
@@ -100,32 +100,32 @@
 
               if ($row['cours_discount'] == "null") {
                 echo " <h3 class='h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4'>
-<span class='float-left'>
+                          <span class='float-left'>
 
-    <strong>&#8377;{$row['cours_price']}</strong>
+                              <strong>&#8377;{$row['cours_price']}</strong>
 
-  </span>
-  </h3>";
+                            </span>
+                            </h3>";
               } else
                 echo "   <h3 class='h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4'>
 
-    <span class='red-text font-weight-bold'>
+                              <span class='red-text font-weight-bold'>
 
-      <strong>&#8377;{$dis}</strong>
+                                <strong>&#8377;{$dis}</strong>
 
-    </span>
+                              </span>
 
-    <span class='grey-text'>
+                              <span class='grey-text'>
 
-      <small>
+                                <small>
 
-        <s>&#8377;{$row['cours_price']}</s>
+                                  <s>&#8377;{$row['cours_price']}</s>
 
-      </small>
+                                </small>
 
-    </span>
+                              </span>
 
-  </h3>";
+                            </h3>";
 
               ?>
 
@@ -206,7 +206,7 @@
                 <!-- Accordion card -->
               </div>
               <!-- Accordion wrapper -->
-            <?php } ?>
+            
             <!-- Add to Cart -->
             <section class="color">
 
@@ -218,9 +218,9 @@
                     <?php
                     include "config.php";
                     if (isset($_SESSION["first_name"])) {
-                      echo '<a href="payment.php"> <button class="btn btn-primary btn-rounded">
+                      echo "<a href='payment.php?id={$id}'> <button class='btn btn-primary btn-rounded'>
                         Join Now</button>
-                  </a>';
+                  </a>";
                     } else {
                       echo '<a href="login.php"> <button class="btn btn-primary btn-rounded">
                         Join Now</button>
@@ -235,8 +235,7 @@
 
             </section>
             <!-- Add to Cart -->
-
-
+ 
             </div>
 
           </div>
@@ -245,6 +244,10 @@
 
       </section>
 
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="<?php echo $row['link'] ?>" allowfullscreen></iframe>
+      </div>
+      <?php } ?>
       <div class="divider-new">
 
         <h3 class="h3-responsive font-weight-bold blue-text mx-3">Related Products</h3>

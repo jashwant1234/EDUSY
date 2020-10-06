@@ -197,34 +197,24 @@ else{
                             </div>
                             <div class="md-form mt-3">
                             <h6 style=" text-align: left;">Discount</h6>
-                            <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="discount" value="<?php                            
-                            
-                                echo $row1['cours_discount'];
-
-                            ?>" >
+                            <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="discount" value="<?php echo $row1['cours_discount'];?>" >
                             </div> 
-                            
                             <div class=" form-check">
                             <input  type="checkbox" class="form-check-input" id="materialUnchecked" name="top_cours" <?php if($row1['top_cours']!='null')echo 'checked';}}?> >
                             <label style="float:left;" class="form-check-label" for="materialUnchecked">add to top cours</label>
                             </div>
-                                
                             <!-- Sign in button -->
                             <br>
-                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" name="save">Add The cours</button>
-                            
+                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" name="save">Add The cours</button>          
                         </form>
                         <!-- Form -->
                     </div>
                     <div class="col-md-3"></div>
                 </div>
             </div>
-
         </div>
         <!-- Material form subscription -->
     </div>
 </body> 
-
-                                    <?php include "../footer.php"; ?>
-
+<?php include "../footer.php"; ?>
 </html>
