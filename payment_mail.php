@@ -48,7 +48,7 @@ if (!isset($_SESSION["first_name"])) {
   $result = mysqli_query($conn, $sql) or die("Query Failed.");
   while ($row = mysqli_fetch_assoc($result)) {
       $cousr_name=$row['cours_name'];
-      $price = $row['cours_price']-$row['cours_discount'];
+      $price = (int)$row['cours_price']-(int)$row['cours_discount'];
   }
   $sql = "INSERT INTO cours_enrollment (user_id,cours_id,user_name,cours_name,price) VALUES 
   ('{$_SESSION["user_id"]}','{$id}','{$_SESSION["user_name"]}','{$cousr_name}','{$price}');";
@@ -57,6 +57,7 @@ if (!isset($_SESSION["first_name"])) {
   $subject='Edusy';
   $body = '<h1 align=center>subscribe my channel</h1>';
   include "mail.php";
+  header("Location: {$url}/user_dashboard.php");
 }
   ?>
   <!-- End your project here-->

@@ -7,6 +7,6 @@ session_unset();
 
 session_destroy();
 
-header("Location: {$url}/index.php")
+header("Location: {$url}/index.php");
 
 ?>

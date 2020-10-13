@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,7 +44,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Start your project here-->
     <script>
@@ -58,7 +56,7 @@
         <thead>
             <tr>
                 <th class="th-sm">cours id
-                </th> 
+                </th>
                 <th class="th-sm">cours name
                 </th>
                 <th class="th-sm">cours image
@@ -91,6 +89,8 @@
                 </th>
                 <th class="th-sm">delete
                 </th>
+                <th class="th-sm">add the schedule
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -113,12 +113,19 @@
                 <td>{$row['trainer_id']}</td>
                 <td>{$row['duration']}</td>
                 <td>{$row['cours_price']}</td>
-                <td>"; if($row['cours_discount'] == null) echo "null";else echo $row['cours_discount']; echo "</td>
-                <td>"; if($row['top_cours'] == null) echo "null";else echo $row['top_cours']; echo "</td>
+                <td>";
+                if ($row['cours_discount'] == null) echo "null";
+                else echo $row['cours_discount'];
+                echo "</td>
+                <td>";
+                if ($row['top_cours'] == null) echo "null";
+                else echo $row['top_cours'];
+                echo "</td>
                 <td>{$row['date']}</td>
                 <td><a href='{$url}/admin/cours_update.php?id={$row['cours_id']}'><i class='far fa-edit'></i></a></td>
                 <td><a href='{$url}/admin/cours_delete.php?id={$row['cours_id']}'><i class='fas fa-trash'></i></a></td>
-            </tr>"; 
+                <td><a href='{$url}/admin/cours_link.php?id={$row['cours_id']}'><i class='fas fa-plus-circle'></i></a></td>
+            </tr>";
             }
             ?>
         </tbody>
@@ -158,15 +165,13 @@
                 </th>
                 <th class="th-sm">delete
                 </th>
+                <th class="th-sm">add the schedule
+                </th>
             </tr>
         </tfoot>
     </table>
-
-
-
     <!-- End your project here-->
     <!-- jQuery -->
-
 </body>
 <?php include "../footer.php"; ?>
 
