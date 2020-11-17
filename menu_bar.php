@@ -22,16 +22,16 @@
         ?>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="courses.php">Courses</a>
+          <a class="nav-link" href="<?php echo $url ;?>/courses.php">Courses</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">project</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="gallery.php">Gallery</a>
+          <a class="nav-link" href="<?php echo $url ;?>/gallery.php">Gallery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about_us.php">about us</a>
+          <a class="nav-link" href="<?php echo $url ;?>/about_us.php">about us</a>
         </li>
       </ul>
     </div>

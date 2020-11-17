@@ -39,6 +39,7 @@
   $result = mysqli_query($conn, $sql) or die("Query Failed.");
   $x = 1;
   while ($row = mysqli_fetch_assoc($result)) {
+    
   ?>
     <div class="container mt-5 pt-3">
       <!-- Section: Product detail -->

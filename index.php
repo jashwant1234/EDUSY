@@ -552,92 +552,52 @@
         <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i class="fas fa-chevron-right"></i></a>
       </div>
       <!--/.Controls-->
-      <div class="carousel-inner v-2" role="listbox">
-
-        <div class="carousel-item active">
+      <div class="carousel-inner v-2" role="listbox">      
+        <?php
+             include "config.php";
+             $sql = "SELECT * FROM member";
+             $result = mysqli_query($conn, $sql) or die("Query Failed.");
+             $x=0;
+             while ($row = mysqli_fetch_assoc($result)) {
+               $x++;
+               if($x==1)
+                echo "<div class='carousel-item active'>";
+                else
+                echo "<div class='carousel-item'>";
+            ?>
           <div class="col-12 col-md-4">
             <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg" alt="Card image cap">
+            
+              <img class="card-img-top" src="admin/img/member/<?php echo $row['image'];?>" alt="<?php echo $row['cours_img']; ?>">
               <div class="card-body">
-                <h4 class="card-title font-weight-bold">Card title</h4>
-                <span class="badge badge-warning">Sport</span>
-                <span class="badge badge-success">Sport</span>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
+                <h4 class="card-title font-weight-bold"><?php echo $row['name'];?></h4>
+                <?php
+                  $sql = "SELECT * FROM categories_cours;";
+                  $result1 = mysqli_query($conn, $sql) or die("Query Failed.");
+                  $tag_1;
+                  $tag_2;
+                  $tsg_3;
+                  while ($row1 = mysqli_fetch_assoc($result1)) {
+                    if ($row['tag_1'] == $row1['categories']) $tag_1 = $row1['color'];
+                    if ($row['tag_2'] == $row1['categories']) $tag_2 = $row1['color'];
+                    if ($row['tag_3'] == $row1['categories']) $tag_3 = $row1['color'];
+                  }
+                  echo "<span class='badge badge-{$tag_1} mb-2'>{$row['tag_1']}</span>&nbsp;";
+                  if ($row['tag_2'] != "null")
+                    echo "<span class='badge badge-{$tag_2} mb-2'>{$row['tag_2']}</span>&nbsp;";
+                  if ($row['tag_3'] != "null")
+                    echo "<span class='badge badge-{$tag_3} mb-2'>{$row['tag_3']}</span>";
+                  ?>
+                <p class="card-text"><?php echo $row['short_desc'];?></p>
                 <a class="btn btn-primary btn-md btn-rounded">Button</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="col-12 col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary btn-md btn-rounded">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-12 col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary btn-md btn-rounded">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-12 col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (29).jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary btn-md btn-rounded">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-12 col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (30).jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary btn-md btn-rounded">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-12 col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (27).jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary btn-md btn-rounded">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <?php }?>
   </div>
 
+ <?php echo $x; ?>
   <!--/.Carousel Wrapper-->
 
   <script>
